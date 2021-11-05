@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <link rel="stylesheet" href="styleIndex.css">
+    <script src="login.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="presentation">
+
+            <h1>
+                Nome piattaforma
+            </h1>
+
+            <p>
+                Prenota il tuo campo o trova altri utenti con cui giocare
+            </p>
+        </div>
+        <div class="login" id="login">
+            <h2>Inserisci i tuoi dati</h2>
+
+            <p class="label">Username:</p>
+            <input class="inputBox" type="text" placeholder="Username">
+
+            <p class="label">Password:</p>
+            <input class="inputBox" type="text" placeholder="Password">
+            <br>
+            <br>
+            <button>Accedi</button>
+            <button onclick='changeDiv("login","registrazione")'>Registrati</button>
+
+        </div>
+
+        <div class="registrazione" id="registrazione">
+            <h2>Inserisci i tuoi dati</h2>
+
+            <p class="label">Nome:</p>
+            <input class="inputBox" type="text" placeholder="Nome">
+
+            <p class="label">Cognome:</p>
+            <input class="inputBox" type="text" placeholder="Cognome">
+            
+            <p class="label">Username:</p>
+            <input class="inputBox" type="text" placeholder="Username">
+
+            <p class="label">Email:</p>
+            <input class="inputBox" type="text" placeholder="Email">
+
+            <p class="label">Password:</p>
+            <input class="inputBox" type="text" placeholder="Password">
+            <br>
+
+            <p class="label">Conferma Password:</p>
+            <input class="inputBox" type="text" placeholder="Conferma Password">
+            <br>
+            <br>
+            <button>Registrati</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
