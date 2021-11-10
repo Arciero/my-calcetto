@@ -1,6 +1,7 @@
 package com.dstech.mycalcetto.service;
 
 import java.time.LocalDateTime;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,9 @@ public class MatchService {
 	
 	public List<Match> availableMatchs(){
 		List<Match> matchs = matchRepository.findByisPrivateFalseAndDateTimeAfter(LocalDateTime.now().minusDays(1));
-		for(int i = 0; i < matchs.size(); i++) {
-			Match m = matchs.get(i);
+		Iterator<Match> it = matchs.iterator();
+		while( it.hasNext() ) {
+			Match m = it.next();
 			List<Team> t =  m.getTeams();
 			int currentParticipant = 0;
 			for(int j = 0; j<t.size(); j++) {
@@ -34,7 +36,7 @@ public class MatchService {
 			}
 			// int currentParticipant = t.get(0).getPlayers().size() + t.get(1).getPlayers().size();
 			if(currentParticipant >= 10) {
-				matchs.remove(i);
+				it.remove();
 			}
 		}
 		return matchs;
