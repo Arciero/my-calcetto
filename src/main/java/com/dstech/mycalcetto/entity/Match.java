@@ -3,13 +3,16 @@ package com.dstech.mycalcetto.entity;
 
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-//ciao a tutti
+
 @Table(name = "match_table")
 @Entity
+@Data
 public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,41 +30,7 @@ public class Match {
     @JoinColumn(name = "arena_id", referencedColumnName = "id")
     private Arena arena;
 
-
     @OneToMany(mappedBy = "match")
     private List<Team> teams = new ArrayList<>();
-
-    public void setTeams(List<Team> teams) {
-    	this.teams = teams;
-    }
-    
-    public List<Team> getTeams(){
-    	return teams;
-    }
-    
-	public LocalDateTime getDateTime() {
-		return dateTime;
-	}
-
-	public void setDateTime(LocalDateTime dateTime) {
-		this.dateTime = dateTime;
-	}
-
-	public boolean isPrivate() {
-		return isPrivate;
-	}
-
-	public void setPrivate(boolean isPrivate) {
-		this.isPrivate = isPrivate;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
 
 }

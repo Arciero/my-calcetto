@@ -37,15 +37,7 @@ public class MatchService {
 				matchs.remove(i);
 			}
 		}
-	return matchs;
-	}
-
-	public MatchRepository getMatchRepository() {
-		return matchRepository;
-	}
-
-	public void setMatchRepository(MatchRepository matchRepository) {
-		this.matchRepository = matchRepository;
+		return matchs;
 	}
 	
 	

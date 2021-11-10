@@ -10,11 +10,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@NoArgsConstructor
-
 @Table(name = "arena_table")
 @Entity
+@Data
 public class Arena {
 	
 	// Attributi
@@ -29,44 +27,4 @@ public class Arena {
 	@OneToMany(mappedBy = "arena")
 	private List<Match> matches = new ArrayList<>();
 
-	// Metodi
-	public void setMatches(List<Match> matches) {
-		this.matches = matches;
-	}
-
-	public List<Match> getMatches() {
-		return matches;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	public String getFieldType() {
-		return fieldType;
-	}
-
-	public void setFieldType(String fieldType) {
-		this.fieldType = fieldType;
-	}
-
-	public boolean isOutdoor() {
-		return isOutdoor;
-	}
-
-	public void setOutdoor(boolean isOutdoor) {
-		this.isOutdoor = isOutdoor;
-	}
 }
