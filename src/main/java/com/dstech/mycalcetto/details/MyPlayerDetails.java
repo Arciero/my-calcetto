@@ -4,12 +4,31 @@ import com.dstech.mycalcetto.entity.Player;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MyPlayerDetails implements PlayerDetails{
+public class MyPlayerDetails implements UserDetails {
     private Player player;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
+    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -28,6 +47,6 @@ public class MyPlayerDetails implements PlayerDetails{
 
     @Override
     public boolean isEnabled() {
-        return Player.isEnabled();
+        return player.isEnabled();
     }
 }
