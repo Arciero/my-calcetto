@@ -11,4 +11,5 @@ import com.dstech.mycalcetto.entity.Match;
 @Repository
 public interface MatchRepository extends JpaRepository<Match, Long> {
 	public List<Match> findByisPrivateFalseAndDateTimeAfter(LocalDateTime dateOfYesterday);
+	
 }

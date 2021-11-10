@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
+//ciao a tutti
 @Table(name = "match_table")
 @Entity
 public class Match {
