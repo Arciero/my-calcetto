@@ -37,6 +37,7 @@ public class Player {
 	private String phoneNumber;
 	@Column(name = "photo", columnDefinition = "BLOB")
 	private byte[] photo;
+	private boolean enabled;
 	@JsonIgnore
 	@OneToMany(mappedBy = "matchmaker")
 	private List<Match> organizedMatches = new ArrayList<>();
