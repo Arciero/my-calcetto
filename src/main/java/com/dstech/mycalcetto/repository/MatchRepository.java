@@ -11,11 +11,11 @@ import org.springframework.stereotype.Repository;
 import com.dstech.mycalcetto.entity.Match;
 
 /**
- * Usando l'annotazione {@link RepositoryRestResource} al posto di {@link JpaRepository},
+ * Usando l'annotazione  RepositoryRestResource} al posto di {@link JpaRepository},
  * Spring crea automaticamente i servizi rest per tutti i metodi CRUD esposti da questo repository
  */
 @RepositoryRestResource( collectionResourceRel = "matchs", path = "matchs")
 public interface MatchRepository extends PagingAndSortingRepository<Match, Long> {
-	public List<Match> findByisPrivateFalseAndDateTimeAfter(LocalDateTime dateOfYesterday);
+	List<Match> findByisPrivateFalseAndDateTimeAfter(LocalDateTime dateOfYesterday);
 
 }
