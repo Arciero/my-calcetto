@@ -1,4 +1,4 @@
-package com.dstech.mycalcetto.details;
+package com.dstech.mycalcetto.entity;
 
 import com.dstech.mycalcetto.entity.Player;
 import com.dstech.mycalcetto.entity.Role;
