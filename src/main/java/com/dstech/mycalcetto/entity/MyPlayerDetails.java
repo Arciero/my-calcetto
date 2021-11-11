@@ -32,14 +32,15 @@ public class MyPlayerDetails implements UserDetails {
         return authorities;
     }
 
+
     @Override
     public String getPassword() {
-        return null;
+        return player.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return player.getUsername();
     }
 
     @Override
