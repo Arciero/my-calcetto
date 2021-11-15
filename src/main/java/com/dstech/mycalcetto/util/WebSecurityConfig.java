@@ -15,13 +15,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public UserDetailsService userDetailsService() {
+
         return new PlayerDetailsService();
     }
 
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
+
         return new BCryptPasswordEncoder();
     }
+
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -34,23 +38,55 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
+        auth.inMemoryAuthentication()
+                .withUser("A").password(passwordEncoder().encode("A")).roles("PLAYER")
+                .and()
+                .withUser("B").password(passwordEncoder().encode("A")).roles("ADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+
+        http
+
+                .authorizeRequests()
+                .antMatchers("/resources/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/Index.html")
+
+                .defaultSuccessUrl("/api/matchs/available", true)
+                .permitAll()
+                .and()
+                .logout().permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/403")
+
+
+
+                //aggiunta dei 2 ".antMatchers in basso
+                /*
+                http.authorizeRequests()
+                .antMatchers("/api/**").permitAll()
+                .antMatchers("/resources/**").permitAll()
+                .antMatchers("/homePage/**").permitAll()
                 .antMatchers("/").hasAnyAuthority("PLAYER", "ADMIN")
                 .antMatchers("/new").hasAnyAuthority("PLAYER", "ADMIN")
                 .antMatchers("/edit/**").hasAnyAuthority("PLAYER", "ADMIN")
                 .antMatchers("/delete/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().permitAll()
+                .formLogin()
+                //aggiunta del .defaultSuccessUrl
+                   .defaultSuccessUrl("/api/matchs/available", true)
+                    .permitAll()
                 .and()
                 .logout().permitAll()
                 .and()
                 .exceptionHandling().accessDeniedPage("/403")
+
+                 */
         ;
     }
 }

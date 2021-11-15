@@ -7,7 +7,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
     <link rel="stylesheet" href="styleIndex.css">
-    <script src="login.js"></script>
+
+    <style>
+        .container {
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    background-color: white;
+    overflow: hidden;
+}
+
+body {
+    background-color: rgb(219, 219, 219);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.presentation {
+    box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    width: 60%;
+    padding: 50px;
+    background-color: brown;
+
+}
+
+.login {
+    box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    width: 40%;
+    padding: 50px;
+
+}
+
+.registrazione {
+    box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    width: 40%;
+    padding: 50px;
+    display: none;
+}
+
+/*Input & Buttons*/
+
+.inputBox{
+    box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    height: 30px;
+    width: 100%;
+}
+.label{
+    margin-bottom: 3px;
+}
+button{
+    width: 80px;
+    height: 40px;
+}
+    </style>
+
 </head>
 
 <body>
@@ -23,20 +94,29 @@
                 Prenota il tuo campo o trova altri utenti con cui giocare
             </p>
         </div>
-        <div class="login" id="login">
+        <form name="f" action="perform_login" method="post">
+
+            <div class="login" id="login">
             <h2>Inserisci i tuoi dati</h2>
 
             <p class="label">Username:</p>
-            <input class="inputBox" type="text" placeholder="Username">
+            <input class="inputBox" type="text" name="username">
 
             <p class="label">Password:</p>
-            <input class="inputBox" type="text" placeholder="Password">
+            <input class="inputBox" type="password" name="password">
             <br>
             <br>
-            <button>Accedi</button>
+            <button name="submit" type="submit" value="submit">Accedi</button>
             <button onclick='changeDiv("login","registrazione")'>Registrati</button>
+            </div>
+            <script src="login.js">
+            function changeDiv (idDiv1, idDiv2) {
+            getElementById(idDiv1).style.display="none";
+            getElementById(idDiv2).style.display="block";
+            }
+            </script>
 
-        </div>
+        </form>
 
         <div class="registrazione" id="registrazione">
             <h2>Inserisci i tuoi dati</h2>

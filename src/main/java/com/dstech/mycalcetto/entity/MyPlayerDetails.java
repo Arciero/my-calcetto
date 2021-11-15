@@ -32,34 +32,39 @@ public class MyPlayerDetails implements UserDetails {
         return authorities;
     }
 
-
     @Override
     public String getPassword() {
+
         return player.getPassword();
     }
 
     @Override
     public String getUsername() {
+
         return player.getUsername();
     }
 
     @Override
     public boolean isAccountNonExpired() {
+
         return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
+
         return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
+
         return true;
     }
 
     @Override
     public boolean isEnabled() {
+
         return player.isEnabled();
     }
 }
