@@ -24,21 +24,21 @@
                     </div>
                     <div class="match_column2">
                         <div class="nome_organizzatore">
-                            <span th:text="${m.matchmaker.username}"> Organizzatore : </span>
+                            Organizzatore : <span th:text="${m.matchmaker.username}"> pippo </span>
                         </div>
                         <div class="campo">
-                            Campo 4 (coperto)
+                            <span th:text="${m.arena.name}">Campo 4</span> ( <span th:text="${m.arena.fieldType}">coperto</span>)
                         </div>
                         <div class="data_orario">
-                            <img class="small_icon" th:src="@{../images/calendar.png}" alt="calendario"> 29/04/2021 <img class="small_icon" src="../images/orologio.png" alt="orologio"> 17:50
+                            <img class="small_icon" th:src="@{../images/calendar.png}" alt="calendario"> <span>29/04/2021</span> <img class="small_icon" src="../images/orologio.png" alt="orologio"> <span>17:50</span>
                         </div>
                         <div class="prezzo">
-                            6€
+                            <span th:text="${m.arena.price/10}">6</span>€
                         </div>
                     </div>
                     <div class="match_column3">
                         <div class="numeriGiocatori">
-                            7/10
+                            <span>7</span>/10
                         </div>
                         <button onclick='CreaMatch("match_container")'>Partecipa</button>
                     </div>

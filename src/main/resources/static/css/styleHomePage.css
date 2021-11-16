@@ -23,7 +23,7 @@
   }
 
 body {
-    background-image: url(back.jpg);
+    background-image: url(../images/back.jpg);
     background-color: rgb(230, 230, 230);
     font-family: 'Lexend Deca', sans-serif;
     margin: 0px;

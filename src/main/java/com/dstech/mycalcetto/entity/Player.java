@@ -40,6 +40,7 @@ public class Player {
 	private String password;
 	@Column(unique = true)
 	private String phoneNumber;
+	@Lob
 	@Column(name = "photo", columnDefinition = "BLOB")
 	private byte[] photo;
 	private boolean enabled;
