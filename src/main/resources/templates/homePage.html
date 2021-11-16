@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="it">
+<!--html lang="it"-->
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Home</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleHomePage.css">
-    <script src="Home.js"></script>
+    <link rel="stylesheet" href="../static/styleHomePage.css">
+    <script src="../static/Home.js"></script>
      <!--Font google-->
 	
 	
@@ -16,19 +17,21 @@
         <div class="container_column1">
             <div class="title"><i>PARTITE PUBBLICHE</i> </div>
             <div id="match_container" class="matchContainer">
-                <div class="match">
+
+                <!--modifiche con aggiunta di thymeleaf-->
+                <div class="match" th:each="m : ${available_matchs}">
                     <div class="match_column1">
-                        <img class="campo_img" src="campoa.jpg" alt="CampoS">
+                        <img class="campo_img" src="../images/campoa.jpg" alt="CampoS">
                     </div>
                     <div class="match_column2">
                         <div class="nome_organizzatore">
-                            Organizzatore: <span id="Matchmaker"><b>Francesco Totti</b></span> 
+                            <span th:text="${m.matchmaker.name}"> Organizzatore : </span>
                         </div>
                         <div class="campo">
                             Campo 4 (coperto)
                         </div>
                         <div class="data_orario">
-                        <img class="small_icon" src="calendar.png" alt="calendario"> 29/04/2021 <img class="small_icon" src="orologio.png" alt="orologio"> 17:50 
+                            <img class="small_icon" src="calendar.png" alt="calendario"> 29/04/2021 <img class="small_icon" src="orologio.png" alt="orologio"> 17:50
                         </div>
                         <div class="prezzo">
                             6€
@@ -41,6 +44,7 @@
                         <button onclick='CreaMatch("match_container")'>Partecipa</button>
                     </div>
                 </div>
+
             </div>
         </div>
 

@@ -98,21 +98,23 @@ button{
                 Prenota il tuo campo o trova altri utenti con cui giocare
             </p>
         </div>
-        <div class="login" id="login">
+        <form name="f" action="perform_login" method="post">
+
+            <div class="login" id="login">
             <h2>Inserisci i tuoi dati</h2>
 
             <p class="label">Username:</p>
-            <input class="inputBox" type="text" placeholder="Username">
+            <input class="inputBox" type="text" name="username">
 
             <p class="label">Password:</p>
-            <input class="inputBox" type="text" placeholder="Password">
+            <input class="inputBox" type="password" name="password">
             <br>
             <br>
-            <button>Accedi</button>
+            <button name="submit" type="submit" value="submit">Accedi</button>
             <button onclick='changeDiv("login","registrazione")'>Registrati</button>
 
         </div>
-
+        </form>
         <div class="registrazione" id="registrazione">
             <h2>Inserisci i tuoi dati</h2>
             <form action="#" th:action="@{/register}" method="post" th:object="${user}">
