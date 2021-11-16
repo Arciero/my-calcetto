@@ -25,20 +25,31 @@ public class LoginController {
 
     @PostMapping("/register")
     public String submitForm(@ModelAttribute("user") Player user) {
-      // playerDetailsService.createPlayer(user);
+        playerDetailsService.createPlayer(user);
+        System.out.println("ciao");
         return "HomePage";
     }
+
+    @GetMapping("/home")
+    public String home(){ return "homePage";}
+
     @GetMapping("/")
+    public String indexVoid() {
+        return "index";
+    }
+
+    @GetMapping("/index")
     public String index() {
         return "index";
     }
-    @GetMapping("/login")
+
+    /*@GetMapping("/login")
     public String login(HttpServletRequest request, HttpSession session) {
         session.setAttribute(
                 "error", getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION")
         );
         return "index";
-    }
+    }*/
 
 
     private String getErrorMessage(HttpServletRequest request, String key) {

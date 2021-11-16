@@ -98,47 +98,47 @@ button{
                 Prenota il tuo campo o trova altri utenti con cui giocare
             </p>
         </div>
-        <form name="f" action="perform_login" method="post">
+        <div class="login" id="login">
+            <form action="#" th:action="@{/login}" method="post" th:object="${loginProcessingUrl}">
+                <h2>Inserisci i tuoi dati</h2>
 
-            <div class="login" id="login">
-            <h2>Inserisci i tuoi dati</h2>
+                <p class="label">Username:</p>
+                <input class="inputBox" type="text" th:field="*{username}">
 
-            <p class="label">Username:</p>
-            <input class="inputBox" type="text" name="username">
-
-            <p class="label">Password:</p>
-            <input class="inputBox" type="password" name="password">
-            <br>
-            <br>
-            <button name="submit" type="submit" value="submit">Accedi</button>
-            <button onclick='changeDiv("login","registrazione")'>Registrati</button>
-
+                <p class="label">Password:</p>
+                <input class="inputBox" type="password" th:field="*{password}">
+                <br>
+                <br>
+                <button type="submit">Accedi</button>
+                <button onclick='changeDiv("login","registrazione")'>Registrati</button>
+            </form>
         </div>
-        </form>
+
+
         <div class="registrazione" id="registrazione">
             <h2>Inserisci i tuoi dati</h2>
             <form action="#" th:action="@{/register}" method="post" th:object="${user}">
-                <p class="label" th:field="*{name}">Nome:</p>
-                <input class="inputBox" type="text" placeholder="Nome">
+                <p class="label" >Nome:</p>
+                <input class="inputBox" type="text" placeholder="Nome" th:field="*{name}">
 
-                <p class="label" th:field="*{surname}">Cognome:</p>
-                <input class="inputBox" type="text" placeholder="Cognome">
+                <p class="label" >Cognome:</p>
+                <input class="inputBox" type="text" placeholder="Cognome" th:field="*{surname}">
 
-                <p class="label" th:field="*{username}">Username:</p>
-                <input class="inputBox" type="text" placeholder="Username">
+                <p class="label">Username:</p>
+                <input class="inputBox" type="text" placeholder="Username" th:field="*{username}">
 
-                <p class="label" th:field="*{email}">Email:</p>
-                <input class="inputBox" type="text" placeholder="Email">
+                <p class="label">Email:</p>
+                <input class="inputBox" type="text" placeholder="Email" th:field="*{email}">
 
-                <p class="label" th:field="*{telefono}">Telefono:</p>
-                <input class="inputBox" type="text" placeholder="Telefono">
+                <p class="label">Telefono:</p>
+                <input class="inputBox" type="text" placeholder="Telefono" th:field="*{telefono}">
 
-                <p class="label" th:field="*{password}">Password:</p>
-                <input class="inputBox" type="password" placeholder="Password">
+                <p class="label">Password:</p>
+                <input class="inputBox" type="password" placeholder="Password" th:field="*{password}">
                 <br>
 
-                <p class="label" th:field="*{passwordConfirm}">Conferma Password:</p>
-                <input class="inputBox" type="password" placeholder="Conferma Password">
+                <p class="label" >Conferma Password:</p>
+                <input class="inputBox" type="password" placeholder="Conferma Password" th:field="*{passwordConfirm}">
                 <br>
                 <br>
                 <button type="submit">Registrati</button>

@@ -13,7 +13,7 @@ import com.dstech.mycalcetto.entity.Match;
 import com.dstech.mycalcetto.service.MatchService;
 
 @Controller
-@RequestMapping("/api/matchs")
+@RequestMapping("/api/matches")
 public class MatchController {
 	
 //	Injection with constructor MatchService in MatchController

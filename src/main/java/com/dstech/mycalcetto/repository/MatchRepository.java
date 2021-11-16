@@ -17,5 +17,4 @@ import com.dstech.mycalcetto.entity.Match;
 @RepositoryRestResource( collectionResourceRel = "matchs", path = "matchs")
 public interface MatchRepository extends PagingAndSortingRepository<Match, Long> {
 	List<Match> findByisPrivateFalseAndDateTimeAfter(LocalDateTime dateOfYesterday);
-
 }

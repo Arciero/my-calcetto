@@ -7,13 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PlayerDetailsService implements UserDetailsService {
     @Autowired
     private PlayerRepository playerRepository;
-
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
@@ -26,8 +28,9 @@ public class PlayerDetailsService implements UserDetailsService {
         return new MyPlayerDetails(user);
     }
 
-    public void createPlayer(UserDetails user) { // Domande: si può usare un interfaccia come tipo??
-        playerRepository.save((Player) user);
+    public void createPlayer(Player user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        playerRepository.save(user);
     }
 
 }

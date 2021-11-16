@@ -1,6 +1,7 @@
 package com.dstech.mycalcetto.util;
 
 import com.dstech.mycalcetto.service.PlayerDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.security.authentication.dao.*;
 import org.springframework.security.config.annotation.authentication.builders.*;
@@ -18,16 +19,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new PlayerDetailsService();
     }
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService());
-        authProvider.setPasswordEncoder(passwordEncoder());
+        authProvider.setPasswordEncoder(bCryptPasswordEncoder);
 
         return authProvider;
     }
@@ -35,16 +34,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("A").password(passwordEncoder().encode("A")).roles("PLAYER")
+                .withUser("A").password(bCryptPasswordEncoder.encode("A")).roles("PLAYER")
                 .and()
-                .withUser("B").password(passwordEncoder().encode("A")).roles("ADMIN");
+                .withUser("B").password(bCryptPasswordEncoder.encode("A")).roles("ADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                //.antMatchers("/").permitAll()
-                .antMatchers("/index.html").permitAll()
+                .antMatchers("/css/**", "/js/**", "/images/**").permitAll()
+                .antMatchers("/home").permitAll()
+                .antMatchers("/api/matches/**").permitAll()
                 .antMatchers("/player/**").hasAuthority("PLAYER")
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
                 //.antMatchers("/").hasAnyAuthority("PLAYER", "ADMIN")
@@ -54,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                    .loginPage("/index.html")
+                    .loginPage("/index.html").permitAll()
                     //.loginProcessingUrl("/index")
                     //.failureUrl("/index?error=true")
                     //.defaultSuccessUrl("HomePage.Html")
