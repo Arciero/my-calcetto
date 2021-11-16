@@ -24,9 +24,9 @@ public class MatchService {
 		this.matchRepository= matchRepository;
 	}
 	
-	public List<Match> availableMatchs(){
-		List<Match> matchs = matchRepository.findByisPrivateFalseAndDateTimeAfter(LocalDateTime.now().minusDays(1));
-		Iterator<Match> it = matchs.iterator();
+	public List<Match> availableMatches(){
+		List<Match> matches = matchRepository.findByisPrivateFalseAndDateTimeAfter(LocalDateTime.now().minusDays(1));
+		Iterator<Match> it = matches.iterator();
 		while( it.hasNext() ) {
 			Match m = it.next();
 			List<Team> t =  m.getTeams();
@@ -39,7 +39,7 @@ public class MatchService {
 				it.remove();
 			}
 		}
-		return matchs;
+		return matches;
 	}
 	
 	

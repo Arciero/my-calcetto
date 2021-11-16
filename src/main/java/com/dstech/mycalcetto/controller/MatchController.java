@@ -1,6 +1,5 @@
 package com.dstech.mycalcetto.controller;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +21,6 @@ public class MatchController {
 //	
 	@GetMapping("/available")
 	public List<Match> availableMatch (){
-		return matchService.availableMatchs();
+		return matchService.availableMatches();
 	}
 }
