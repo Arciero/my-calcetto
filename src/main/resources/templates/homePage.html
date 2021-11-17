@@ -43,7 +43,7 @@
                     </div>
                     <div class="match_column3">
                         <div class="numeriGiocatori">
-                            <span>7</span>/10
+                            <span th:text="${m.teams[0].players.size()+m.teams[1].players.size()}">7</span>/10
                         </div>
                         <button onclick='CreaMatch("match_container")'>Partecipa</button>
                     </div>
