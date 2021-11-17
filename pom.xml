@@ -25,11 +25,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
-		<!--<dependency>
+		<dependency>
    			 <groupId>org.thymeleaf</groupId>
   			 <artifactId>thymeleaf</artifactId>
   			 <version>3.0.12.RELEASE</version>
-		</dependency>-->
+		</dependency>
 
 		<!--dependency aggiunta-->
 		<dependency>
@@ -43,6 +43,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-java8time</artifactId>
+			<version>3.0.4.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>

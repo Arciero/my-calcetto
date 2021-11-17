@@ -1,14 +1,11 @@
 package com.dstech.mycalcetto.entity;
 
-
-
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-
+import java.util.Date;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
