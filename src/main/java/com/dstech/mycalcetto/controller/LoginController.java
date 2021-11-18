@@ -33,15 +33,11 @@ public class LoginController {
     @GetMapping("/home")
     public String home(){ return "homePage";}
 
-    @GetMapping("/")
+    @GetMapping(value = {"/","/index"})
     public String indexVoid() {
         return "index";
     }
 
-    @GetMapping("/index")
-    public String index() {
-        return "index";
-    }
 
     /*@GetMapping("/login")
     public String login(HttpServletRequest request, HttpSession session) {

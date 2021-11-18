@@ -35,7 +35,7 @@
                             <span th:text="${m.arena.name}">Campo 4</span> (<span th:text="${m.arena.fieldType}">coperto</span>)
                         </div>
                         <div class="data_orario">
-                            <img class="small_icon" th:src="@{/images/calendar.png}" alt="calendario"> <span th:text="${m.dateTime}">29/04/2021</span> <img class="small_icon" th:src="@{/images/orologio.png}" alt="orologio"> <span>17:50</span>
+                            <img class="small_icon" th:src="@{/images/calendar.png}" alt="calendario"> <span th:text="${#temporals.format(m.dateTime, 'dd-MM-yyyy')}">29/04/2021</span> <img class="small_icon" th:src="@{/images/orologio.png}" alt="orologio"> <span th:text="${#temporals.format(m.dateTime,'HH:mm')}">17:50</span>
                         </div>
                         <div class="prezzo">
                             <span th:text="${m.arena.price/10}">6</span>€
