@@ -57,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/index.html").permitAll()
                     //.loginProcessingUrl("/index")
                     //.failureUrl("/index?error=true")
-                    //.defaultSuccessUrl("HomePage.Html")
+                    .defaultSuccessUrl("/home")
                     //.usernameParameter("user_name")
                     //.passwordParameter("password")
                 .and()
