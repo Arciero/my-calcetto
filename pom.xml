@@ -30,7 +30,6 @@
   			 <artifactId>thymeleaf</artifactId>
   			 <version>3.0.12.RELEASE</version>
 		</dependency>
-
 		<!--dependency aggiunta-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

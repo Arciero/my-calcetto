@@ -1,7 +1,6 @@
 package com.dstech.mycalcetto.entity;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 

@@ -1,26 +1,26 @@
-
+/*
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lexend+Deca:wght@300;400;700;800;900&display=swap');
 ::-webkit-scrollbar {
     width: 10px;
    
   }
   
-  /* Track */
+  *//* Track *//*
   ::-webkit-scrollbar-track {
     background: #ffffff00; 
   }
    
-  /* Handle */
+  *//* Handle *//*
   ::-webkit-scrollbar-thumb {
     background: rgb(63, 63, 63); 
     border-radius: 5px;
   }
   
-  /* Handle on hover */
+  *//* Handle on hover *//*
   ::-webkit-scrollbar-thumb:hover {
     background: rgb(124, 124, 124); 
     border-radius: 5px;
-  }
+  }*/
 
 body {
     background-image: url(../images/back.jpg);
@@ -115,7 +115,8 @@ img.small_icon{
 }
 
 .match_column1 {
-width: auto;
+/*cambiamento da auto a 30% per non far spostare le altre column a causa della grandezza delle img*/
+width: 30%;
 
 }
 
@@ -205,6 +206,15 @@ width: auto;
     overflow: auto;
 }
 .lista_partite_organizzate{
+    display: none;
+    width: 100%;
+    padding: 4.5%;
+    padding-top: 13px;
+    margin-top:0px;
+    flex: 1;
+    overflow: auto;
+}
+.storico_partite{
     display: none;
     width: 100%;
     padding: 4.5%;

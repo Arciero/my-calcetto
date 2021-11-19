@@ -1,7 +1,5 @@
 package com.dstech.mycalcetto.entity;
 
-import com.dstech.mycalcetto.entity.Player;
-import com.dstech.mycalcetto.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

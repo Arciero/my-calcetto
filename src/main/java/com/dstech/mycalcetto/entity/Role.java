@@ -21,5 +21,4 @@ public class Role {
     @NonNull
     private String name;
 
-
 }

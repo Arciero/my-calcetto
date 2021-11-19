@@ -8,6 +8,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+            #
+      show-sql: true
+            #
   thymeleaf:
     cache: false
             #settaggio dei livelli del log a INFO (3)

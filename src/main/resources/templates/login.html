@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
-    <link rel="stylesheet" th:href="@{/styleIndex.css}">
-    <style> .container {
+    <!--<link rel="stylesheet" th:href="@{/styleIndex.css}">-->
+    <style>
+    .container {
     width: 800px;
     margin: 0 auto;
     margin-top: 100px;
@@ -17,14 +18,14 @@
     border-radius: 20px;
     background-color: white;
     overflow: hidden;
-}
+    }
 
-body {
+    body {
     background-color: rgb(219, 219, 219);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
+    }
 
-.presentation {
+    .presentation {
     box-sizing: border-box;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -34,9 +35,9 @@ body {
     padding: 50px;
     background-color: brown;
 
-}
+    }
 
-.login {
+    .login {
     box-sizing: border-box;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -45,9 +46,9 @@ body {
     width: 40%;
     padding: 50px;
 
-}
+    }
 
-.registrazione {
+    .registrazione {
     box-sizing: border-box;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -56,11 +57,11 @@ body {
     width: 40%;
     padding: 50px;
     display: none;
-}
+    }
 
 /*Input & Buttons*/
 
-.inputBox{
+    .inputBox{
     box-sizing: border-box;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -68,21 +69,22 @@ body {
     -o-box-sizing: border-box;
     height: 30px;
     width: 100%;
-}
-.label{
+    }
+    .label{
     margin-bottom: 3px;
-}
-button{
+    }
+    button{
     width: 80px;
     height: 40px;
-} </style>
-    <script type="text/javascript" th:src="@{/js/login.js}"></script>
+    }
+</style>
+    <!--<script type="text/javascript" th:src="@{/js/login.js}"></script>
     <script>
         function changeDiv (idDiv1, idDiv2) {
             document.getElementById(idDiv1).style.display="none";
             document.getElementById(idDiv2).style.display="block";
         }
-    </script>
+    </script>-->
 </head>
 
 <body>
@@ -91,7 +93,7 @@ button{
         <div class="presentation">
 
             <h1>
-                Nome piattaforma
+                My Calcetto
             </h1>
 
             <p>
@@ -102,48 +104,22 @@ button{
             <form th:action="@{/login}" method="post">
                 <h2>Inserisci i tuoi dati</h2>
 
-                <p class="label">Username:</p>
-                <input class="inputBox" type="text" th:field="*{username}">
+                <p class="label" for="username">Username:</p>
+                <input id="username" class="inputBox" type="text" name="username">
+                <!--<input class="inputBox" type="text" th:field="*{username}">-->
 
-                <p class="label">Password:</p>
-                <input class="inputBox" type="password" th:field="*{password}">
+                <p class="label" for="password">Password:</p>
+                <input id="password" class="inputBox" type="password" name="password">
+                <!--<input class="inputBox" type="password" th:field="*{password}">-->
                 <br>
                 <br>
                 <button type="submit">Accedi</button>
-                <button onclick='changeDiv("login","registrazione")'>Registrati</button>
+                <!--<button onclick='changeDiv("login","registrazione")'>Registrati</button>-->
             </form>
         </div>
 
+        <div>Non sei registrato? clicca <a th:href="@{/register}">qui</a></div>
 
-        <div class="registrazione" id="registrazione">
-            <h2>Inserisci i tuoi dati</h2>
-            <form action="#" th:action="@{/register}" method="post" th:object="${user}">
-                <p class="label" >Nome:</p>
-                <input class="inputBox" type="text" placeholder="Nome" th:field="*{name}">
-
-                <p class="label" >Cognome:</p>
-                <input class="inputBox" type="text" placeholder="Cognome" th:field="*{surname}">
-
-                <p class="label">Username:</p>
-                <input class="inputBox" type="text" placeholder="Username" th:field="*{username}">
-
-                <p class="label">Email:</p>
-                <input class="inputBox" type="text" placeholder="Email" th:field="*{email}">
-
-                <p class="label">Telefono:</p>
-                <input class="inputBox" type="text" placeholder="Telefono" th:field="*{telefono}">
-
-                <p class="label">Password:</p>
-                <input class="inputBox" type="password" placeholder="Password" th:field="*{password}">
-                <br>
-
-                <p class="label" >Conferma Password:</p>
-                <input class="inputBox" type="password" placeholder="Conferma Password" th:field="*{passwordConfirm}">
-                <br>
-                <br>
-                <button type="submit">Registrati</button>
-            </form>
-        </div>
     </div>
 
 </body>

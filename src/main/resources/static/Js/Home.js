@@ -98,11 +98,18 @@ function menuEvidence(id_Element){
     switch(id_Element) {
         case "partite_tab":
             document.getElementById("partite_organizzate").style.display = "none";
+            document.getElementById("storico_partite").style.display = "none";
             document.getElementById("partite").style.display = "block";
         break;
         case "partite_organizzate_tab":
             document.getElementById("partite").style.display = "none";
+            document.getElementById("storico_partite").style.display = "none";
             document.getElementById("partite_organizzate").style.display = "block";
+          break;
+          case "storico_partite_tab":
+            document.getElementById("partite").style.display = "none";
+            document.getElementById("partite_organizzate").style.display = "none";
+            document.getElementById("storico_partite").style.display = "block";
           break;
         default:
           alert("WTF?!")

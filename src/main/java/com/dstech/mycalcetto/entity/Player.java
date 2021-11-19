@@ -1,13 +1,10 @@
 package com.dstech.mycalcetto.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -23,8 +20,6 @@ import java.util.Set;
 		// quindi una tabella, del database
 
 public class Player {
-
-	//@RequiredArgsConstructor
 
 	@Id // marca l'attributo come chiave primaria
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // strategia di definizione dell'attributo, in questo caso
@@ -58,6 +53,5 @@ public class Player {
 	private List<Match> organizedMatches = new ArrayList<>();
 	@ManyToMany(mappedBy = "players")
 	private List<Team> teams = new ArrayList<>();
-
 
 }

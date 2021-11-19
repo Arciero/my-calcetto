@@ -14,40 +14,8 @@
 <body>
     <div class="container">
         <div class="container_column1">
-            <div class="title"><i>PARTITE PUBBLICHE</i> </div>
-            <div id="match_container" class="matchContainer">
-
-                <!--modifiche con aggiunta di thymeleaf-->
-                <div class="match" th:each="m : ${available_matches}">
-                    <div class="match_column1" th:switch="${m.arena.name}">
-                        <img class="campo_img" th:case="'Campo A'" th:src="@{/images/campoa.jpg}" alt="CampoA">
-                        <img class="campo_img" th:case="'Campo B'" th:src="@{/images/campob.jpg}" alt="CampoB">
-                        <img class="campo_img" th:case="'Campo C'" th:src="@{/images/campoc.jpg}" alt="CampoC">
-                        <img class="campo_img" th:case="'Campo D'" th:src="@{/images/campod.jpg}" alt="CampoD">
-                        <img class="campo_img" th:case="'Campo E'" th:src="@{/images/campoe.jpg}" alt="CampoE">
-                        <span th:case="*">Unknown</span>
-                    </div>
-                    <div class="match_column2">
-                        <div class="nome_organizzatore">
-                            Organizzatore : <strong><span th:text="${m.matchmaker.username}"> pippo </span></strong>
-                        </div>
-                        <div class="campo">
-                            <span th:text="${m.arena.name}">Campo 4</span> (<span th:text="${m.arena.fieldType}">coperto</span>)
-                        </div>
-                        <div class="data_orario">
-                            <img class="small_icon" th:src="@{/images/calendar.png}" alt="calendario"> <span th:text="${#temporals.format(m.dateTime, 'dd-MM-yyyy')}">29/04/2021</span> <img class="small_icon" th:src="@{/images/orologio.png}" alt="orologio"> <span th:text="${#temporals.format(m.dateTime,'HH:mm')}">17:50</span>
-                        </div>
-                        <div class="prezzo">
-                            <span th:text="${m.arena.price/10}">6</span>€
-                        </div>
-                    </div>
-                    <div class="match_column3">
-                        <div class="numeriGiocatori">
-                            <span th:text="${m.teams[0].players.size()+m.teams[1].players.size()}">7</span>/10
-                        </div>
-                        <button onclick='CreaMatch("match_container")'>Partecipa</button>
-                    </div>
-                </div>
+            <div class="title"><i>PARTITE PUBBLICHE</i></div>
+            <div id="match_container" class="matchContainer" th:insert="fragments/match_fragments :: match_detail" th:with="matches_list=${available_matches}">
 
             </div>
         </div>
@@ -64,19 +32,22 @@
             <div class="menu_partite">
                 <div id="partite_tab" class="selected" onclick='menuEvidence("partite_tab")'>Le Mie Partite</div>
                 <div id="partite_organizzate_tab" class="not_selected" onclick='menuEvidence("partite_organizzate_tab")'>Partite Organizzate</div>
+                <div id="storico_partite_tab" class="not_selected" onclick='menuEvidence("storico_partite_tab")'>Storico partite</div>
             </div>
-            <div id="partite" class="lista_partite">
+            <div id="partite" class="lista_partite" th:insert="fragments/match_fragments :: match_detail" th:with="matches_list=${my_matches}">
                
             </div>
-            <div id="partite_organizzate" class="lista_partite_organizzate">
+            <div id="partite_organizzate" class="lista_partite_organizzate" th:insert="fragments/match_fragments :: match_detail" th:with="matches_list=${matches_organized_by_me}">
         
+            </div>
+            <div id="storico_partite" class="storico_partite" th:insert="fragments/match_fragments :: match_detail">  <!--th:with="matches_list=${played_matches}"-->
+
             </div>
             <button onclick='CreaMatch("partite")'>add 1</button>
             <button onclick='CreaMatch("partite_organizzate")'>add 2</button>
         </div>
         
     </div>
-    
 
 </body>
 

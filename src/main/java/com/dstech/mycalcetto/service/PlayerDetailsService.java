@@ -24,12 +24,12 @@ public class PlayerDetailsService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("Could not find user");
         }
-
         return new MyPlayerDetails(user);
     }
 
     public void createPlayer(Player user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setEnabled( true ); //una volta effettuata la registrazione l'account verrà abilitato
         playerRepository.save(user);
     }
 

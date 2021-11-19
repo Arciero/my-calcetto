@@ -59,9 +59,11 @@ body {
     height: 30px;
     width: 100%;
 }
+
 .label{
     margin-bottom: 3px;
 }
+
 button{
     width: 80px;
     height: 40px;
