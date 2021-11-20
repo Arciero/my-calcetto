@@ -84,15 +84,15 @@
         <!--CREATE MATCH-->
         <div id="Create_Match" class="container_column2 hide">
             <div class="title"><i>CREA PARTITA</i></div>
-            <form action="/api/v2/matches/creatematch" method="POST">
+            
                 <input type="radio" id="privata" name="isPrivate" value="true"> <label for="privata">Privata</label>
                 <input type="radio" id="pubblica" name="isPrivate" value="false"><label for="pubblica">Pubblica</label>
                 <br><br>
                 <label>Data</label><br>
-                <input type="date" id="inputDate" class="inputBox">
+                <input type="date" onchange="resetSchedule()" id="inputDate" class="inputBox">
                 <br><br>
                 <label>Campo</label><br>
-                <select id="arenaId"  class="inputBox" >
+                <select onchange="resetSchedule()" id="arenaId"  class="inputBox" >
                     <option value="1">Campo A</option>
                     <option value="2">Campo B</option>
                     <option value="3">Campo C</option>
@@ -103,7 +103,7 @@
                 <button type="button" onclick="getSchedule()">Avanti</button>
                 <br><br>
                 <div class="radio" id="schedule"></div>
-            </form>
+            
         </div>
 
 

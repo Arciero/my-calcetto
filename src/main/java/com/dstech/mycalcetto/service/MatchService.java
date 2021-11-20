@@ -10,6 +10,8 @@ import java.util.Map;
 import com.dstech.mycalcetto.entity.Arena;
 import com.dstech.mycalcetto.form.CreateMatchForm;
 import com.dstech.mycalcetto.repository.ArenaRepository;
+import com.dstech.mycalcetto.repository.PlayerRepository;
+import com.dstech.mycalcetto.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,10 @@ public class MatchService {
 
 	@Autowired
 	ArenaRepository arenaRepository;
+	@Autowired
+	PlayerRepository playerRepository;
+	@Autowired
+	TeamRepository teamRepository;
 	
 	public List<Match> availableMatches(){
 		List<Match> matches = matchRepository.findByisPrivateFalseAndDateTimeAfter(LocalDateTime.now().minusDays(1));
@@ -61,24 +67,35 @@ public class MatchService {
 		return schedule;
 	}
 
-	public void createMatch(CreateMatchForm formData){
+	public String createMatch(CreateMatchForm formData){
 		Match newMatch = new Match();
+		newMatch.setMatchmaker(playerRepository.findById(1l).get());
 		newMatch.setDateTime(formData.getDateTime());
 		newMatch.setPrivate(formData.isPrivate());
 		newMatch.setStatus("active");
+		// set Arena
 		try {
 			Arena arena = arenaRepository.findById(formData.getIdArena()).get();
 			newMatch.setArena(arena);
 		}catch (Exception E){
 			System.out.println("No Arena Found for Id:"+formData.getIdArena());
+			return "Arena non trovata";
+		}
+		matchRepository.save(newMatch);
+		if(!formData.isPrivate()) {
+			// Create Void Teams
+			Team teamA = new Team();
+			teamA.setType('A');
+			teamA.setMatch(newMatch);
+			teamA.getPlayers().add(playerRepository.findById(1l).get());
+			Team teamB = new Team();
+			teamB.setMatch(newMatch);
+			teamB.setType('B');
+			teamRepository.save(teamA);
+			teamRepository.save(teamB);
 		}
 
-		Team teamA = new Team();
-		teamA.setType('A');
-		teamA.setMatch(newMatch);
-		teamA.setPlayers();
-		Team teamB = new Team();
-		teamB.setType('B');
+		return "Match Inserito con Successo";
 	}
 
 	

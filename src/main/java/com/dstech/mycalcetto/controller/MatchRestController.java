@@ -19,21 +19,14 @@ public class MatchRestController {
     @Autowired
     private MatchService matchService;
 
-    @Autowired
-    private CreateMatchForm createMatchForm;
-
     @GetMapping("/date/{date}/{idArena}")
     public Map<Integer, Boolean> getByDateAndArena(@PathVariable("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, @PathVariable("idArena") Long idArena){
         return matchService.scheduleArena(date, idArena);
     }
 
-    @PostMapping("/creatematch/{isPrivate}/{dateTime}/{idArena}")
-    public String createMatch(@PathVariable("isPrivate") Boolean isPrivate, @PathVariable("dateTime") LocalDateTime date, @PathVariable("idArena") Long idArena){
-        createMatchForm.setDateTime(date);
-        createMatchForm.setPrivate(isPrivate);
-        createMatchForm.setIdArena(idArena);
-        //MatchService.
-        return"succesCreation";
+    @PostMapping("/creatematch")
+    public String createMatch(@RequestBody CreateMatchForm matchForm){
+        return "{\"message\":\""+matchService.createMatch(matchForm)+"\"}";
     }
 
 

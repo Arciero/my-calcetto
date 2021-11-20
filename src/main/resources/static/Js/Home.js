@@ -128,16 +128,28 @@ function postCreateMatch(){
     let date = document.getElementById("inputDate").value;
     let time = document.querySelector('input[name="scheduleRadio"]:checked').value;
     let arenaId = document.getElementById("arenaId").value;
+
+    let createMatchForm = {
+        isPrivate: isPrivate,
+        dateTime: date+'T'+time,
+        idArena: arenaId
+    }
+
     const requestOption = {
         method: 'POST',
-       headers:{
+        headers:{
             'Content-type': 'application/json'
-       }
+        },
+        body: JSON.stringify(createMatchForm)
+        
     }
-    fetch('http://localhost:8080/api/v2/matches/creatematch/'isPrivate+'/'+date+'T'+time+'/'+arenaId, requestOption)
+    fetch('http://localhost:8080/api/v2/matches/creatematch', requestOption)
     .then(res => res.json())
-    .then(data => new Map(Object.entries(data)))
-    .then(map => createSchedulerButtons(map))
+    .then(data => {
+        alert(data.message);
+        location.reload();
+    })
+
 }
 
 function createSchedulerButtons(map){
@@ -150,7 +162,7 @@ function createSchedulerButtons(map){
         buttons += code;
         startTime++;
     }
-    let submit = `<br><br><button type="submit">Conferma</button>`;
+    let submit = `<br><br><button onclick="postCreateMatch()">Conferma</button>`;
     document.getElementById("schedule").innerHTML = lable+buttons+submit;
 }
 
@@ -161,4 +173,9 @@ function changeVisibility(id_Element){
         targetElement.classList.replace("hide","visible")
         visibleElement[0].classList.replace("visible","hide");
     }   
+}
+
+function resetSchedule(){
+    document.getElementById('schedule').innerHTML = "";
+
 }
