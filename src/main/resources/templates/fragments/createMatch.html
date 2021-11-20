@@ -1,0 +1,20 @@
+<div id="Create_Match" th:fragment="createMatch" class="container_column2">
+   <div class="title"><i>CREA PARTITA</i> </div>
+    <form action="#" th:action="@{/schedule}" method="post" th:object="${newMatch}">
+        <input type="radio" name="isPrivate" value="1" th:checked="*{isPrivate}"/>Privata
+        <input type="radio" name="isPrivate" value="0" th:checked="*{isPrivate}"/>Pubblica
+        <br><br>
+        <label>Data</label> <br>
+        <input id="dateInput" type="date" th:field="*{dateTime}" class="inputBox">
+        <br><br>
+        <label>Campo</label> <br>
+       <select id="arenaId" class="inputBox" th:field="*{arena}">
+            <option th:each="a : ${listArenas}" th:value="${a.id}" th:text="${a.name}">
+       </select>
+        <br><br>
+       <button   onclick="getScheduler()" >Avanti</button>
+        <br><br>
+        <div id="scheduler"></div>
+        <!--<div th:replace="fragments/TimeScheduler :: timeScheduler"></div>-->
+    </form>
+</div>

@@ -114,33 +114,16 @@ function getSchedule(){
     let arenaId = document.getElementById("arenaId").value;
     const requestOption = {
         method: 'GET',
-        headers:{
+       headers:{
             'Content-type': 'application/json'
-        }
+       }
     }
     fetch('http://localhost:8080/api/v2/matches/date/'+date+'/'+arenaId, requestOption)
     .then(res => res.json())
     .then(data => new Map(Object.entries(data)))
     .then(map => createSchedulerButtons(map))
 }
-function postCreateMatch(){
-    let isPrivate = document.querySelector('input[name="isPrivate"]:checked').value;
-    let date = document.getElementById("inputDate").value;
-    let time = document.querySelector('input[name="scheduleRadio"]:checked').value;
-    let arenaId = document.getElementById("arenaId").value;
-    const requestOption = {
-        method: 'POST',
-       headers:{
-            'Content-type': 'application/json'
-       }
-    }
-    fetch('http://localhost:8080/api/v2/matches/creatematch/'isPrivate+'/'+date+'T'+time+'/'+arenaId, requestOption)
-    .then(res => res.json())
-    .then(data => new Map(Object.entries(data)))
-    .then(map => createSchedulerButtons(map))
-}
-
-function createSchedulerButtons(map){
+    function createSchedulerButtons(map){
     let lable = `<label>Fascia oraria</label><br>`;
     let startTime = 10;
     let lastTime = 23;

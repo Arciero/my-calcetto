@@ -84,9 +84,9 @@
         <!--CREATE MATCH-->
         <div id="Create_Match" class="container_column2 hide">
             <div class="title"><i>CREA PARTITA</i></div>
-            <form action="/api/v2/matches/creatematch" method="POST">
-                <input type="radio" id="privata" name="isPrivate" value="true"> <label for="privata">Privata</label>
-                <input type="radio" id="pubblica" name="isPrivate" value="false"><label for="pubblica">Pubblica</label>
+            <form>
+                <input type="radio" id="privata" name="isPrivate" value="1"> <label for="privata">Privata</label>
+                <input type="radio" id="pubblica" name="isPrivate" value="0"><label for="pubblica">Pubblica</label>
                 <br><br>
                 <label>Data</label><br>
                 <input type="date" id="inputDate" class="inputBox">

@@ -1,9 +1,15 @@
 package com.dstech.mycalcetto.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import com.dstech.mycalcetto.entity.Arena;
+import com.dstech.mycalcetto.form.CreateMatchForm;
+import com.dstech.mycalcetto.repository.ArenaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +27,11 @@ public class MatchService {
 	private MatchRepository matchRepository;
 	
 	public MatchService(MatchRepository matchRepository){
-
 		this.matchRepository= matchRepository;
 	}
+
+	@Autowired
+	ArenaRepository arenaRepository;
 	
 	public List<Match> availableMatches(){
 		List<Match> matches = matchRepository.findByisPrivateFalseAndDateTimeAfter(LocalDateTime.now().minusDays(1));
@@ -42,6 +50,37 @@ public class MatchService {
 		}
 		return matches;
 	}
+
+	public Map<Integer, Boolean> scheduleArena(LocalDate bookingDay, Long idArena){
+		List<Match> bookedTimes = matchRepository.findByDateAndArena(bookingDay, idArena);
+		Map<Integer, Boolean> schedule = new HashMap<>();
+		for (Match m: bookedTimes) {
+			m.getDateTime().getHour();
+			schedule.put(m.getDateTime().getHour(), true);
+		}
+		return schedule;
+	}
+
+	public void createMatch(CreateMatchForm formData){
+		Match newMatch = new Match();
+		newMatch.setDateTime(formData.getDateTime());
+		newMatch.setPrivate(formData.isPrivate());
+		newMatch.setStatus("active");
+		try {
+			Arena arena = arenaRepository.findById(formData.getIdArena()).get();
+			newMatch.setArena(arena);
+		}catch (Exception E){
+			System.out.println("No Arena Found for Id:"+formData.getIdArena());
+		}
+
+		Team teamA = new Team();
+		teamA.setType('A');
+		teamA.setMatch(newMatch);
+		teamA.setPlayers();
+		Team teamB = new Team();
+		teamB.setType('B');
+	}
+
 	
 	
 }

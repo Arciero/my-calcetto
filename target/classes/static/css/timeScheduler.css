@@ -1,0 +1,34 @@
+}
+
+.radio {
+	padding: 10px;
+	border-radius: 5px;
+	position: relative;
+}
+
+.radio input {
+	width: auto;
+	appearance: none;
+	outline: none;
+	cursor: pointer;
+	font-size: 20px;
+	border-radius: 2px;
+	padding: 4px 8px;
+	border: 1px solid;
+	color: #bdbdbdbd;
+	transition: all 100ms linear;
+}
+
+.radio input:checked {
+	background-image: linear-gradient(180deg, #95d891, #74bbad);
+	color: #fff;
+
+
+}
+
+.radio input:before {
+	content: attr(label);
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+}

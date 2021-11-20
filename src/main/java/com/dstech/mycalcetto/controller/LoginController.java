@@ -27,11 +27,14 @@ public class LoginController {
     public String submitForm(@ModelAttribute("user") Player user) {
         playerDetailsService.createPlayer(user);
         System.out.println("ciao");
-        return "HomePage";
+        return "homePage";
     }
 
     @GetMapping("/home")
     public String home(){ return "homePage";}
+
+    @GetMapping("/test")
+    public String test(){ return "Test";}
 
     @GetMapping(value = {"/","/index"})
     public String indexVoid() {
