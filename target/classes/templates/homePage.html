@@ -13,12 +13,16 @@
 
 <body>
     <div class="container">
+
+        <!-- PARTITE PUBBLICHE -->
         <div class="container_column1">
             <div class="title"><i>PARTITE PUBBLICHE</i></div>
             <div id="match_container" class="matchContainer" th:insert="fragments/match_fragments :: match_detail" th:with="matches_list=${available_matches}">
 
             </div>
+            <button class="create_match_button" onclick='changeVisibility("Create_Match")'>+</button>
         </div>
+
 
         <!-- PLAYER PROFILE -->
         <div id="profile_info" class="container_column2 playerProfile visible">
@@ -36,10 +40,10 @@
                 <div id="storico_partite_tab" class="not_selected" onclick='menuEvidence("storico_partite_tab")'>Storico partite</div>
             </div>
             <div id="partite" class="lista_partite" th:insert="fragments/match_fragments :: match_detail" th:with="matches_list=${my_matches}">
-
+               
             </div>
             <div id="partite_organizzate" class="lista_partite_organizzate" th:insert="fragments/match_fragments :: match_detail" th:with="matches_list=${matches_organized_by_me}">
-
+        
             </div>
             <div id="storico_partite" class="storico_partite" th:insert="fragments/match_fragments :: match_detail" th:with="matches_list=${played_matches}">
 
@@ -49,7 +53,6 @@
             <button onclick='CreaMatch("partite_organizzate")'>add 2</button>
             -->
         </div>
-
 
         <!--CREATE MATCH-->
         <div id="Create_Match" class="container_column2 hide">
@@ -76,7 +79,9 @@
 
         </div>
 
+
     </div>
+
 </body>
 
 </html>
