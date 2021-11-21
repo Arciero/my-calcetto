@@ -44,19 +44,11 @@
     -moz-box-sizing: border-box;
     -o-box-sizing: border-box;
     width: 40%;
-    padding: 50px;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-bottom: 10px;
+    padding-left: 50px;
 
-    }
-
-    .registrazione {
-    box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    width: 40%;
-    padding: 50px;
-    display: none;
     }
 
 /*Input & Buttons*/
@@ -70,9 +62,17 @@
     height: 30px;
     width: 100%;
     }
+
     .label{
     margin-bottom: 3px;
     }
+
+    .to_registration{
+    margin-right: 20px;
+    width: 100%;
+    text-align: end;
+    }
+
     button{
     width: 80px;
     height: 40px;
@@ -116,9 +116,11 @@
                 <button type="submit">Accedi</button>
                 <!--<button onclick='changeDiv("login","registrazione")'>Registrati</button>-->
             </form>
-        </div>
+            <br>
+            <br>
+            <div class="to_registration">Non sei registrato? clicca <a th:href="@{/register}">qui</a></div>
 
-        <div>Non sei registrato? clicca <a th:href="@{/register}">qui</a></div>
+        </div>
 
     </div>
 

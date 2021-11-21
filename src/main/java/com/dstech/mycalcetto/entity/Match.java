@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -30,11 +32,12 @@ public class Match {
     @JoinColumn(name = "matchmaker_id", referencedColumnName = "id")
     private Player matchmaker;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY) //abilita il lazy loading
     @JoinColumn(name = "arena_id", referencedColumnName = "id")
+
     private Arena arena;
 
-    @OneToMany(mappedBy = "match")
+    @OneToMany(mappedBy = "match", fetch = FetchType.LAZY)
     private List<Team> teams = new ArrayList<>();
 
 }

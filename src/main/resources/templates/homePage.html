@@ -40,11 +40,13 @@
             <div id="partite_organizzate" class="lista_partite_organizzate" th:insert="fragments/match_fragments :: match_detail" th:with="matches_list=${matches_organized_by_me}">
         
             </div>
-            <div id="storico_partite" class="storico_partite" th:insert="fragments/match_fragments :: match_detail">  <!--th:with="matches_list=${played_matches}"-->
+            <div id="storico_partite" class="storico_partite" th:insert="fragments/match_fragments :: match_detail" th:with="matches_list=${played_matches}">
 
             </div>
+            <!--
             <button onclick='CreaMatch("partite")'>add 1</button>
             <button onclick='CreaMatch("partite_organizzate")'>add 2</button>
+            -->
         </div>
         
     </div>

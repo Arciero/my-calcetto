@@ -8,9 +8,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-            #
-      show-sql: true
-            #
+            #fa vedere sul log le query che esegue tramite jpa
+    show-sql: true
+            #fa il refresh della cache ad ogni modifica
   thymeleaf:
     cache: false
             #settaggio dei livelli del log a INFO (3)
