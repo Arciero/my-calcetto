@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 */
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -15,9 +16,14 @@ import com.dstech.mycalcetto.repository.MatchRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import com.dstech.mycalcetto.entity.Arena;
+import com.dstech.mycalcetto.entity.Player;
+import com.dstech.mycalcetto.repository.ArenaRepository;
+import com.dstech.mycalcetto.repository.PlayerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.dstech.mycalcetto.entity.Match;
 import com.dstech.mycalcetto.service.MatchService;
@@ -27,6 +33,10 @@ import com.dstech.mycalcetto.service.MatchService;
 @Slf4j
 //@RequestMapping("/api/matches")
 public class MatchController {
+
+	@Autowired
+	private ArenaRepository arenaRepository;
+
 
     //	Injection with constructor MatchService in MatchController
     private MatchService matchService;
@@ -42,6 +52,9 @@ public class MatchController {
     //public List<Match> availableMatch () {
     @GetMapping("/home")
     public String availableMatch(Model model) {
+
+		List<Arena> arenas = arenaRepository.findAll();
+		model.addAttribute("listArenas", arenas);
 
         /*
          * Carico tutti i match disponibili

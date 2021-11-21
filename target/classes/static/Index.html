@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <link th:href="@{/css/styleIndex.css}" rel="stylesheet" />
+    <style> .container {
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    background-color: white;
+    overflow: hidden;
+}
+
+body {
+    background-color: rgb(219, 219, 219);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.presentation {
+    box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    width: 60%;
+    padding: 50px;
+    background-color: brown;
+
+}
+
+.login {
+    box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    width: 40%;
+    padding: 50px;
+}
+
+.registrazione {
+    box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    width: 40%;
+    padding: 50px;
+    display: none;
+}
+
+/*Input & Buttons*/
+
+.inputBox{
+    box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    height: 30px;
+    width: 100%;
+}
+.label{
+    margin-bottom: 3px;
+}
+button{
+    width: 80px;
+    height: 40px;
+}
+</style>
+    <script type="text/javascript" th:src="@{/js/login.js}"></script>
+    <script>
+        function changeDiv (idDiv1, idDiv2) {
+            document.getElementById(idDiv1).style.display="none";
+            document.getElementById(idDiv2).style.display="block";
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="presentation">
+
+            <h1>
+                Nome piattaforma
+            </h1>
+
+            <p>
+                Prenota il tuo campo o trova altri utenti con cui giocare
+            </p>
+        </div>
+        <div class="login" id="login">
+            <form action="#" th:action="@{/login}" method="post" th:object="${loginProcessingUrl}">
+                <h2>Inserisci i tuoi dati</h2>
+
+                <p class="label">Username:</p>
+                <input class="inputBox" type="text" th:field="*{username}">
+
+                <p class="label">Password:</p>
+                <input class="inputBox" type="password" th:field="*{password}">
+                <br>
+                <br>
+                <button type="submit">Accedi</button>
+            </form>
+            <button onclick='changeDiv("login","registrazione")'>Registrati</button>
+        </div>
+
+        <div class="registrazione" th:replace="fragments/registration :: registrationForm"  id="registrazione">
+            <h2>Inserisci i tuoi dati</h2>
+            <form action="#" th:action="@{/register}" method="post" th:object="${user}">
+                <p class="label" >Nome:</p>
+                <input class="inputBox" type="text" placeholder="Nome" th:field="*{name}">
+
+                <p class="label" >Cognome:</p>
+                <input class="inputBox" type="text" placeholder="Cognome" th:field="*{surname}">
+
+                <p class="label">Username:</p>
+                <input class="inputBox" type="text" placeholder="Username" th:field="*{username}">
+
+                <p class="label">Email:</p>
+                <input class="inputBox" type="text" placeholder="Email" th:field="*{email}">
+
+                <p class="label">Telefono:</p>
+                <input class="inputBox" type="text" placeholder="Telefono" th:field="*{telefono}">
+
+                <p class="label">Password:</p>
+                <input class="inputBox" type="password" placeholder="Password" th:field="*{password}">
+                <br>
+
+                <p class="label" >Conferma Password:</p>
+                <input class="inputBox" type="password" placeholder="Conferma Password" th:field="*{passwordConfirm}">
+                <br>
+                <br>
+                <button type="submit">Registrati</button>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

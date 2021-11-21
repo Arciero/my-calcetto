@@ -1,7 +1,9 @@
 package com.dstech.mycalcetto.util;
 
 import com.dstech.mycalcetto.service.PlayerDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
+import org.springframework.security.authentication.dao.*;
 import org.springframework.security.config.annotation.authentication.builders.*;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.*;
@@ -54,8 +56,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.failureUrl("/index?error=true")
                 //.usernameParameter("user_name")
                 //.passwordParameter("password")
-                .antMatchers("/resources/**").permitAll()
+                .antMatchers("/static/**").permitAll()
+                .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
+                .antMatchers("/templates/login.html", "/templates/userRegistration.html",).permitAll()
+                .antMatchers("/home").hasAuthority("PLAYER")
                 .antMatchers("/player/**").hasAuthority("PLAYER")
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated()

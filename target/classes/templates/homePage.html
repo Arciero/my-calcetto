@@ -20,7 +20,8 @@
             </div>
         </div>
 
-        <div class="container_column2">
+        <!-- PLAYER PROFILE -->
+        <div id="profile_info" class="container_column2 playerProfile visible">
             <!-- Dati profilo-->
             <div class="foto_profilo">
                 <img th:src="@{/images/avatar.png}" alt="avatar" class="avatar">
@@ -35,10 +36,10 @@
                 <div id="storico_partite_tab" class="not_selected" onclick='menuEvidence("storico_partite_tab")'>Storico partite</div>
             </div>
             <div id="partite" class="lista_partite" th:insert="fragments/match_fragments :: match_detail" th:with="matches_list=${my_matches}">
-               
+
             </div>
             <div id="partite_organizzate" class="lista_partite_organizzate" th:insert="fragments/match_fragments :: match_detail" th:with="matches_list=${matches_organized_by_me}">
-        
+
             </div>
             <div id="storico_partite" class="storico_partite" th:insert="fragments/match_fragments :: match_detail" th:with="matches_list=${played_matches}">
 
@@ -48,9 +49,34 @@
             <button onclick='CreaMatch("partite_organizzate")'>add 2</button>
             -->
         </div>
-        
-    </div>
 
+
+        <!--CREATE MATCH-->
+        <div id="Create_Match" class="container_column2 hide">
+            <div class="title"><i>CREA PARTITA</i></div>
+
+                <input type="radio" id="privata" name="isPrivate" value="true"> <label for="privata">Privata</label>
+                <input type="radio" id="pubblica" name="isPrivate" value="false"><label for="pubblica">Pubblica</label>
+                <br><br>
+                <label>Data</label><br>
+                <input type="date" onchange="resetSchedule()" id="inputDate" class="inputBox">
+                <br><br>
+                <label>Campo</label><br>
+                <select onchange="resetSchedule()" id="arenaId"  class="inputBox" >
+                    <option value="1">Campo A</option>
+                    <option value="2">Campo B</option>
+                    <option value="3">Campo C</option>
+                    <option value="4">Campo D</option>
+                    <option value="5">Campo E</option>
+                </select>
+                <br><br>
+                <button type="button" onclick="getSchedule()">Avanti</button>
+                <br><br>
+                <div class="radio" id="schedule"></div>
+
+        </div>
+
+    </div>
 </body>
 
 </html>

@@ -39,15 +39,17 @@ public class LoginController {
         return "HomePage";
     }
     */
+/*
+    @GetMapping("/test")
+    public String test(){ return "Test";}
 
-
+    @GetMapping(value = {"/","/index"})
+    public String indexVoid() {
+        return "index";
+    }
+*/
 //    @GetMapping("/home")
 //    public String home(){ return "homePage";}
-//
-//    @GetMapping(value = {"/","/index"})
-//    public String indexVoid() {
-//        return "index";
-//    }
 //
 //    /*@GetMapping("/login")
 //    public String login(HttpServletRequest request, HttpSession session) {
@@ -59,6 +61,7 @@ public class LoginController {
 
     private String getErrorMessage(HttpServletRequest request, String key) {
         Exception exception = (Exception) request.getSession().getAttribute(key);
+        //String error = ""; gli "" dovrebbero essere ridondanti
         String error = "";
         if (exception instanceof BadCredentialsException) {
             error = "Invalid username and password!";

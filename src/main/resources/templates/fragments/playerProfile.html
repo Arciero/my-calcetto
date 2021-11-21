@@ -1,0 +1,20 @@
+<div id="profile_info"  th:fragment="playerProfile" class="container_column2">
+    <!-- Dati profilo-->
+    <div class="foto_profilo">
+        <img th:src="@{/images/avatar.png}" alt="avatar" class="avatar">
+    </div>
+    <div id="username" class="h1">Pippo.Franco56</div>
+    <div id="nome_utente" class="span">Pippo Franco</div>
+
+    <!-- Tab menù Partite-->
+    <div class="menu_partite">
+        <div id="partite_tab" class="selected" onclick='menuEvidence("partite_tab")'>Le Mie Partite</div>
+        <div id="partite_organizzate_tab" class="not_selected" onclick='menuEvidence("partite_organizzate_tab")'>Partite Organizzate</div>
+    </div>
+    <div id="partite" class="lista_partite">
+
+    </div>
+    <div id="partite_organizzate" class="lista_partite_organizzate">
+
+    </div>
+</div>

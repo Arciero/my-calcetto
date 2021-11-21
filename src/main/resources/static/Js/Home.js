@@ -114,5 +114,83 @@ function menuEvidence(id_Element){
         default:
           alert("WTF?!")
       }
+}
+
+// metodo get degli orari disponibili del campo
+function getSchedule(){
+    let date = document.getElementById("inputDate").value;
+    let arenaId = document.getElementById("arenaId").value;
+    const requestOption = {
+        method: 'GET',
+        headers:{
+            'Content-type': 'application/json'
+        }
+    }
+    fetch('http://localhost:8080/api/v2/matches/date/'+date+'/'+arenaId, requestOption)
+    .then(res => res.json())
+    .then(data => new Map(Object.entries(data)))
+    .then(map => createSchedulerButtons(map))
+}
+
+// metodo post per la creazione del match
+function postCreateMatch(){
+    
+    let isPrivate = (document.querySelector('input[name="isPrivate"]:checked').value === 'true'); // cast string to boolean
+    let date = document.getElementById("inputDate").value;
+    let time = document.querySelector('input[name="scheduleRadio"]:checked').value;
+    let arenaId = document.getElementById("arenaId").value;
+
+    let createMatchForm = {
+        isPrivate: isPrivate,
+        dateTime: date+'T'+time,
+        idArena: arenaId
+    }
+    
+    const requestOption = {
+        method: 'POST',
+        headers:{
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(createMatchForm)
+        
+    }
+
+    fetch('http://localhost:8080/api/v2/matches/creatematch', requestOption)
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);
+        location.reload();
+    })
+
+}
+
+// metodo che crea lo scheduler delle date
+function createSchedulerButtons(map){
+    let lable = `<label>Fascia oraria</label><br>`;
+    let startTime = 10;
+    let lastTime = 23;
+    let buttons = "";
+    while(startTime <= lastTime){
+        let code = `<input label="${startTime}:00" type="radio" name = "scheduleRadio" value="${startTime}:00" ${map.get(''+startTime) ? "disabled" : ""}>`;
+        buttons += code;
+        startTime++;
+    }
+    let submit = `<br><br><button onclick="postCreateMatch()">Conferma</button>`;
+    document.getElementById("schedule").innerHTML = lable+buttons+submit;
+}
+
+// metodo che cambia la visibilità dei pannelli della colonna 2
+function changeVisibility(id_Element){
+    let targetElement= document.getElementById(id_Element);
+    let visibleElement = document.getElementsByClassName("visible");
+    if(!targetElement.isEqualNode(visibleElement[0])){
+        targetElement.classList.replace("hide","visible")
+        visibleElement[0].classList.replace("visible","hide");
+    }   
+}
+
+// metodo che resetta gli orari al cambio dei campi inseriti precedentemente
+function resetSchedule(){
+    document.getElementById('schedule').innerHTML = "";
 
 }
