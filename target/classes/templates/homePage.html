@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--html lang="it"-->
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/css/styleHomePage.css}" rel="stylesheet" />
+    <script  type="text/javascript" th:src="@{/js/Home.js}"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container_column1">
+            <div class="title"><i>PARTITE PUBBLICHE</i></div>
+            <div id="match_container" class="matchContainer" th:insert="fragments/match_fragments :: match_detail" th:with="matches_list=${available_matches}">
+
+            </div>
+        </div>
+
+        <div class="container_column2">
+            <!-- Dati profilo-->
+            <div class="foto_profilo">
+                <img th:src="@{/images/avatar.png}" alt="avatar" class="avatar">
+            </div>
+            <div id="username" class="h1">Pippo.Franco56</div>
+            <div id="nome_utente" class="span">Pippo Franco</div>
+
+            <!-- Tab menù Partite-->
+            <div class="menu_partite">
+                <div id="partite_tab" class="selected" onclick='menuEvidence("partite_tab")'>Le Mie Partite</div>
+                <div id="partite_organizzate_tab" class="not_selected" onclick='menuEvidence("partite_organizzate_tab")'>Partite Organizzate</div>
+                <div id="storico_partite_tab" class="not_selected" onclick='menuEvidence("storico_partite_tab")'>Storico partite</div>
+            </div>
+            <div id="partite" class="lista_partite" th:insert="fragments/match_fragments :: match_detail" th:with="matches_list=${my_matches}">
+               
+            </div>
+            <div id="partite_organizzate" class="lista_partite_organizzate" th:insert="fragments/match_fragments :: match_detail" th:with="matches_list=${matches_organized_by_me}">
+        
+            </div>
+            <div id="storico_partite" class="storico_partite" th:insert="fragments/match_fragments :: match_detail" th:with="matches_list=${played_matches}">
+
+            </div>
+            <!--
+            <button onclick='CreaMatch("partite")'>add 1</button>
+            <button onclick='CreaMatch("partite_organizzate")'>add 2</button>
+            -->
+        </div>
+        
+    </div>
+
+</body>
+
+</html>

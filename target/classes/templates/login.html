@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <!--<link rel="stylesheet" th:href="@{/styleIndex.css}">-->
+    <style>
+    .container {
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    background-color: white;
+    overflow: hidden;
+    }
+
+    body {
+    background-color: rgb(219, 219, 219);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .presentation {
+    box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    width: 60%;
+    padding: 50px;
+    background-color: brown;
+
+    }
+
+    .login {
+    box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    width: 40%;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+
+    }
+
+/*Input & Buttons*/
+
+    .inputBox{
+    box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    height: 30px;
+    width: 100%;
+    }
+
+    .label{
+    margin-bottom: 3px;
+    }
+
+    .to_registration{
+    margin-right: 20px;
+    width: 100%;
+    text-align: end;
+    }
+
+    button{
+    width: 80px;
+    height: 40px;
+    }
+</style>
+    <!--<script type="text/javascript" th:src="@{/js/login.js}"></script>
+    <script>
+        function changeDiv (idDiv1, idDiv2) {
+            document.getElementById(idDiv1).style.display="none";
+            document.getElementById(idDiv2).style.display="block";
+        }
+    </script>-->
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="presentation">
+
+            <h1>
+                My Calcetto
+            </h1>
+
+            <p>
+                Prenota il tuo campo o trova altri utenti con cui giocare
+            </p>
+        </div>
+        <div class="login" id="login">
+            <form th:action="@{/login}" method="post">
+                <h2>Inserisci i tuoi dati</h2>
+
+                <p class="label" for="username">Username:</p>
+                <input id="username" class="inputBox" type="text" name="username">
+                <!--<input class="inputBox" type="text" th:field="*{username}">-->
+
+                <p class="label" for="password">Password:</p>
+                <input id="password" class="inputBox" type="password" name="password">
+                <!--<input class="inputBox" type="password" th:field="*{password}">-->
+                <br>
+                <br>
+                <button type="submit">Accedi</button>
+                <!--<button onclick='changeDiv("login","registrazione")'>Registrati</button>-->
+            </form>
+            <br>
+            <br>
+            <div class="to_registration">Non sei registrato? clicca <a th:href="@{/register}">qui</a></div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

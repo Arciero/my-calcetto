@@ -1,0 +1,21 @@
+spring:
+  profiles: dev, default
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/calcetto_db
+    username: root
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+            #fa vedere sul log le query che esegue tramite jpa
+    show-sql: true
+            #fa il refresh della cache ad ogni modifica
+  thymeleaf:
+    cache: false
+            #settaggio dei livelli del log a INFO (3)
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO

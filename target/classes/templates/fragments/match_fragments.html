@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+<!--modifiche con aggiunta di thymeleaf-->
+<div th:fragment="match_detail">
+    <div class="match" th:each="m : ${matches_list}">
+        <div class="match_column1" th:switch="${m.arena.name}">
+            <img class="campo_img" th:case="'Campo A'" th:src="@{/images/campoa.jpg}" alt="CampoA">
+            <img class="campo_img" th:case="'Campo B'" th:src="@{/images/campob.jpg}" alt="CampoB">
+            <img class="campo_img" th:case="'Campo C'" th:src="@{/images/campoc.jpg}" alt="CampoC">
+            <img class="campo_img" th:case="'Campo D'" th:src="@{/images/campod.jpg}" alt="CampoD">
+            <img class="campo_img" th:case="'Campo E'" th:src="@{/images/campoe.jpg}" alt="CampoE">
+            <span th:case="*">Unknown</span>
+        </div>
+        <div class="match_column2">
+            <div class="nome_organizzatore">
+                Organizzatore : <strong><span th:text="${m.matchmaker.username}"> pippo </span></strong>
+            </div>
+            <div class="campo">
+                <span th:text="${m.arena.name}">Campo 4</span> (<span th:text="${m.arena.fieldType}">coperto</span>)
+            </div>
+            <div class="data_orario">
+                <img class="small_icon" th:src="@{/images/calendar.png}" alt="calendario"> <span th:text="${#temporals.format(m.dateTime, 'dd-MM-yyyy')}">29/04/2021</span> <img class="small_icon" th:src="@{/images/orologio.png}" alt="orologio"> <span th:text="${#temporals.format(m.dateTime,'HH:mm')}">17:50</span>
+            </div>
+            <div class="prezzo">
+                <span th:text="${m.arena.price/10}">6</span>€
+            </div>
+        </div>
+        <div class="match_column3">
+            <div class="numeriGiocatori">
+                <span th:text="${m.teams[0].players.size()+m.teams[1].players.size()}">7</span>/10
+            </div>
+                <button onclick='CreaMatch("match_container")'>Partecipa</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
