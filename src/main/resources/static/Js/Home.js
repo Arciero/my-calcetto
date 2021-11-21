@@ -109,6 +109,7 @@ function menuEvidence(id_Element){
       }
 }
 
+// metodo get degli orari disponibili del campo
 function getSchedule(){
     let date = document.getElementById("inputDate").value;
     let arenaId = document.getElementById("arenaId").value;
@@ -123,8 +124,11 @@ function getSchedule(){
     .then(data => new Map(Object.entries(data)))
     .then(map => createSchedulerButtons(map))
 }
+
+// metodo post per la creazione del match
 function postCreateMatch(){
-    let isPrivate = document.querySelector('input[name="isPrivate"]:checked').value;
+    
+    let isPrivate = (document.querySelector('input[name="isPrivate"]:checked').value === 'true'); // cast string to boolean
     let date = document.getElementById("inputDate").value;
     let time = document.querySelector('input[name="scheduleRadio"]:checked').value;
     let arenaId = document.getElementById("arenaId").value;
@@ -134,7 +138,7 @@ function postCreateMatch(){
         dateTime: date+'T'+time,
         idArena: arenaId
     }
-
+    
     const requestOption = {
         method: 'POST',
         headers:{
@@ -143,6 +147,7 @@ function postCreateMatch(){
         body: JSON.stringify(createMatchForm)
         
     }
+
     fetch('http://localhost:8080/api/v2/matches/creatematch', requestOption)
     .then(res => res.json())
     .then(data => {
@@ -152,6 +157,7 @@ function postCreateMatch(){
 
 }
 
+// metodo che crea lo scheduler delle date
 function createSchedulerButtons(map){
     let lable = `<label>Fascia oraria</label><br>`;
     let startTime = 10;
@@ -166,6 +172,7 @@ function createSchedulerButtons(map){
     document.getElementById("schedule").innerHTML = lable+buttons+submit;
 }
 
+// metodo che cambia la visibilità dei pannelli della colonna 2
 function changeVisibility(id_Element){
     let targetElement= document.getElementById(id_Element);
     let visibleElement = document.getElementsByClassName("visible");
@@ -175,6 +182,7 @@ function changeVisibility(id_Element){
     }   
 }
 
+// metodo che resetta gli orari al cambio dei campi inseriti precedentemente
 function resetSchedule(){
     document.getElementById('schedule').innerHTML = "";
 

@@ -69,9 +69,12 @@ public class MatchService {
 
 	public String createMatch(CreateMatchForm formData){
 		Match newMatch = new Match();
+		// qui metto il giocatore della sessione come matchmaker, sostituire da "playerRepository.findById(1l).get()"
 		newMatch.setMatchmaker(playerRepository.findById(1l).get());
+		//
 		newMatch.setDateTime(formData.getDateTime());
-		newMatch.setPrivate(formData.isPrivate());
+		newMatch.setPrivate(formData.getIsPrivate());
+		System.out.println(newMatch.isPrivate());
 		newMatch.setStatus("active");
 		// set Arena
 		try {
@@ -82,12 +85,15 @@ public class MatchService {
 			return "Arena non trovata";
 		}
 		matchRepository.save(newMatch);
-		if(!formData.isPrivate()) {
+		// se la partita è pubblica crea le squadre altrimenti no
+		if(!formData.getIsPrivate()) {
 			// Create Void Teams
 			Team teamA = new Team();
 			teamA.setType('A');
 			teamA.setMatch(newMatch);
+			// qui metto il giocatore della sessione dentro uno dei team, sostituire da "playerRepository.findById(1l).get()"
 			teamA.getPlayers().add(playerRepository.findById(1l).get());
+			//
 			Team teamB = new Team();
 			teamB.setMatch(newMatch);
 			teamB.setType('B');
