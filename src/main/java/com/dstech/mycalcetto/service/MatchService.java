@@ -9,6 +9,7 @@ import java.util.Map;
 
 import com.dstech.mycalcetto.entity.Arena;
 import com.dstech.mycalcetto.form.CreateMatchForm;
+import com.dstech.mycalcetto.form.CreateTeamForm;
 import com.dstech.mycalcetto.repository.ArenaRepository;
 import com.dstech.mycalcetto.repository.PlayerRepository;
 import com.dstech.mycalcetto.repository.TeamRepository;
@@ -25,9 +26,9 @@ import lombok.Data;
 @Data
 @Service
 public class MatchService {
-	
+
 	private MatchRepository matchRepository;
-	
+
 	public MatchService(MatchRepository matchRepository){
 
 		this.matchRepository= matchRepository;
@@ -105,6 +106,9 @@ public class MatchService {
 		return "Match Inserito con Successo";
 	}
 
-
+	public String participateMatch(Match m, CreateTeamForm formData)
+	{
+		return "";  //da fare
+	}
 	
 }

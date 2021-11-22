@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+    <!--modifiche con aggiunta di thymeleaf-->
+    <div th:fragment="match_participate">
+        <div th:each="m : ${matches_list}">
+            <div class="title"><i>SCEGLI UNA SQUADRA</i></div>
+
+            <input type="radio" id="rossa" name="type" value="A"> <label for="rossa">Rossa</label>
+            <input type="radio" id="blu" name="type" value="B"><label for="blu">Blu</label>
+            <br><br>
+            <div th:each="t : ${m.teams}">
+                <table>
+                    <tbody th:each="p : ${t.players}">
+                        <tr>
+                            <td th:text="${p.name}">Totti</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br><br>
+            <button type="button" onclick="postTeam()">Continua</button>
+            <br><br>
+        </div>
+    </div>
+</body>
+</html>>

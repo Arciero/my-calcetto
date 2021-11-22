@@ -132,6 +132,37 @@ function getSchedule(){
     .then(map => createSchedulerButtons(map))
 }
 
+function postTeam()
+{
+    let match = (document.)
+    let type = (document.querySelector('input[name="type"]:checked').value);
+
+    let createTeamForm =
+    {
+        type: type,
+    }
+
+    const requestOption =
+    {
+        method: 'POST',
+        headers:
+        {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(createTeamForm)
+    }
+
+    fetch('http://localhost:8080/api/v2/matches/participateMatch', requestOption)
+    .then(res => res.json())
+    .then
+    (data =>
+        {
+            alert(data.message);
+            location.reload();
+        }
+    )
+}
+
 // metodo post per la creazione del match
 function postCreateMatch(){
     

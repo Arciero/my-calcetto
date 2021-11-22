@@ -2,6 +2,7 @@ package com.dstech.mycalcetto.controller;
 
 import com.dstech.mycalcetto.entity.Match;
 import com.dstech.mycalcetto.form.CreateMatchForm;
+import com.dstech.mycalcetto.form.CreateTeamForm;
 import com.dstech.mycalcetto.repository.ArenaRepository;
 import com.dstech.mycalcetto.repository.MatchRepository;
 import com.dstech.mycalcetto.service.MatchService;
@@ -29,7 +30,10 @@ public class MatchRestController {
         return "{\"message\":\""+matchService.createMatch(matchForm)+"\"}";
     }
 
-
+    @PostMapping("/participateMatch")
+    public String participateMatch(@RequestBody Match m, @RequestBody CreateTeamForm teamForm){
+        return "{\"message\":\""+matchService.participateMatch(m, teamForm)+"\"}";
+    }
 
 }
 

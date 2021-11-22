@@ -33,7 +33,8 @@
             <div class="numeriGiocatori">
                 <span th:text="${m.teams[0].players.size()+m.teams[1].players.size()}">7</span>/10
             </div>
-                <button onclick='CreaMatch("match_container")'>Partecipa</button>
+                <button onclick='changeVisibility("Participate_Match")' >Partecipa</button>
+            <!--<span th:text="${m.id}">qui ci sta il match</span>-->
         </div>
     </div>
 </div>

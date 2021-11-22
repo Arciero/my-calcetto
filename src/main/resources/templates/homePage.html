@@ -76,9 +76,12 @@
                 <button type="button" onclick="getSchedule()">Avanti</button>
                 <br><br>
                 <div class="radio" id="schedule"></div>
-
         </div>
 
+        <!--CREATE MATCH-->
+        <div id="Participate_Match" class="container_column2 hide" th:insert="fragments/participate_fragments :: match_participate" th:with="matches_list=${available_matches[5]}">
+
+        </div>
 
     </div>
 
